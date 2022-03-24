@@ -20,6 +20,7 @@ body{
     color:white;
     .navbar-left-container, .navbar-right-container {
         padding:0 20px;
+        font-size: 14px;
         svg {
         width:14px;
         }
@@ -36,9 +37,6 @@ body{
             border-radius:30px;
             @include transform(360deg); 
             
-        }
-        i {
-            font-size:10px;
         }
     }
 

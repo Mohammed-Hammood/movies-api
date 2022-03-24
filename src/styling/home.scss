@@ -1,77 +1,86 @@
 $bgHoverColor:rgb(209, 209, 209);
-.single-movie-container {
-    border:1px solid silver;
-    padding:10px;
-    border-radius:5px;
-    margin-bottom:10px;
-    float:left;
-    display:block;
+@mixin setWidthAndPadding($padding){
+    padding:$padding;
+    width:calc(100% - $padding * 2);
+}
+@mixin setFlexCenterColumn($gap:0px){
+    display: flex;
     justify-content: center;
-    width:100%;
-    cursor:inherit;
-    font-size:14px;
-    i{
-        font-size: 10px;
-    }
-    transition: box-shadow 1s;
-    background-repeat: no-repeat;
-    div img {
-        width:100%;
-    }
-    .movie-image-container {
-        width:100%;
-        max-height:150px;
-        overflow:hidden;
-        border-radius:5px 5px 0 0;
-        border:none;
-
-    }
-    .comments-container {
-        
-        button {
-            cursor:pointer;
-            padding:2px 20px 2px 20px;
-            margin:5px 5px 0 0;
-        }
-        textarea{
-        width:99%;
-        float:left;
-        height:50px;
-        min-height:50px;
-        border:1px solid silver;
-        font-size:13px;
-        border-radius:5px;
-        max-height:150px;
-        resize:vertical;
-    }
+    flex-direction: column;
+    gap:$gap;
 }
-
-    
-}
-
-.single-movie-container:hover {
-    background: {
-        color:$bgHoverColor;
-       
-    }
-    box-shadow: 3px 3px 30px red;
-
-}
-.home-contaienr{
-    padding:10px;
-    width:90%;
-    display:flex;
-    justify-content:center;
-}
-.main-movies-container {
-    width:70%;
-    
-}
-@media screen and (max-width: 600px){
+.home-container {
+    display: grid;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
     .main-movies-container {
-        width:100%;
+        max-width: 900px;
+       @include setFlexCenterColumn(10px);
+        .single-movie-container {
+            border:1px solid silver;
+            background-color: white;
+            padding:10px;
+            border-radius:5px;
+            width:100%;
+            display: flex;
+            justify-content: flex-start;
+            gap:10px;
+            cursor:inherit;
+            font-size:14px;
+            transition: box-shadow 1s;
+            background-repeat: no-repeat;
+            .row-1 {
+                flex:1 1 35%;
+            }
+            .row-2 {
+                flex: 1 1 65%;
+            }
+            .movie-image-container {
+                width:100%;
+                max-height:310px;
+                max-width:310px;
+                overflow:hidden;
+                border-radius:5px 5px 0 0;
+                border:none;
+                img {
+                    width:300px;
+                    height:300px;
+                    object-fit: cover;
+                    }
+                
+            }
+            .view-details-container {
+                a {
+                    text-decoration: none;
+                    color:blue;
+                }
+            }
+            .comments-container {
+                
+                button {
+                    cursor:pointer;
+                    padding:2px 20px 2px 20px;
+                    margin:5px 5px 0 0;
+                }
+                textarea{
+                    width:99%;
+                    float:left;
+                    height:50px;
+                    min-height:50px;
+                    border:1px solid silver;
+                    font-size:13px;
+                    border-radius:5px;
+                    max-height:150px;
+                    resize:vertical;
+                }
+            }
+    
+        }
     }
+    
 }
+
 
 .truncate {
     max-height:100px;
@@ -91,14 +100,16 @@ $bgHoverColor:rgb(209, 209, 209);
         justify-content:center;
         width:100%;
         button {
-            border-radius:50%;
+            border-radius:50%; 
             cursor:pointer;
             border:none;
             padding:10px;
             margin:5px;
             font-size:15px;
-             box-shadow:-3px -3px 10px black;
-
+            box-shadow:-3px -3px 10px black;
+            .text {
+                font-size:12px;
+            }
         }
         button:hover {
             color:white;
@@ -107,4 +118,13 @@ $bgHoverColor:rgb(209, 209, 209);
         }
     }
    
+}
+@media screen and (max-width:700px) {
+    .home-container .main-movies-container .single-movie-container {
+        justify-content: center;
+        flex-direction: column;
+        .row-1, .row-2 {
+            flex:1 1 100%;
+        }
+    }
 }

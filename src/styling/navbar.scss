@@ -13,6 +13,7 @@ body{
     z-index:100;
     display:flex;
     justify-content: space-between;
+
     background: {
         color:black;
     }
@@ -20,9 +21,11 @@ body{
     color:white;
     .navbar-left-container, .navbar-right-container {
         padding:0 20px;
-        font-size: 14px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
         svg {
-        width:14px;
+        width:15px;
         }
         a {
             color:white;

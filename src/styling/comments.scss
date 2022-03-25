@@ -1,0 +1,45 @@
+
+
+.comments-api-container, .comments-storage-container {
+    display: flex;
+    margin-top:10px;
+    justify-content: center;
+    gap:10px;
+    flex-direction: column;
+    color:black;
+    max-width: 1222px;
+    .comment  {
+        display: flex;
+        padding: 10px;
+        gap:10px;
+        border-radius: 10px;
+        overflow: hidden;
+        border:1px solid silver;
+        background: white;
+        .comment-text {
+            span {
+                color:#919191;
+                font-size:11px;
+            }
+            p {
+                font-size: 12px;
+            }
+            span a {
+            display: none;
+            }
+        }
+        .comment-likes {
+            display: none;
+        }
+        .avatar-thumb {
+
+            img {
+                height: 40px;
+                width: 40px;
+                border-radius: 150px;
+                -webkit-border-radius: 150px;
+                -moz-border-radius: 150px;
+            }
+        }
+    }
+}

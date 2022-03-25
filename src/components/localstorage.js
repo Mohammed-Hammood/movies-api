@@ -5,7 +5,7 @@ export const setComments = (comment_text, MOVIE_ID)=> {
     const comment = {
         text:comment_text,
         date:getFullDate(),
-        movie_id:MOVIE_ID,
+        movie_id:parseInt(MOVIE_ID),
     }
     comments.push(comment);
     localStorage.setItem('comments', JSON.stringify(comments));
@@ -22,14 +22,16 @@ export const getCommentsByMovieId = (MOVIE_ID)=> {
     const comments = getComments();
     let commentsByMovieId = [];
     for(let i = 0; i < comments.length; i++){
-        if(comments[i].movie_id === MOVIE_ID){
+        if(parseInt(comments[i].movie_id) === parseInt(MOVIE_ID)){
             commentsByMovieId.push(comments[i]);
         }
     }
     return commentsByMovieId;
 }
 
+
 const getFullDate = ()=> {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Decemberry'];
     const date = new Date();
     const minutes = date.getMinutes();
     const hours = date.getHours();
@@ -37,5 +39,5 @@ const getFullDate = ()=> {
     const month = date.getMonth();
     const year = date.getFullYear();
     const DISPLAY = (item)=> {return ((item < 10)?("0" + item.toString()): item.toString());  }
-    return DISPLAY(day) + '.' + DISPLAY(month) + '.' + year.toString()  + ' - '+ DISPLAY(hours) + ':' + DISPLAY(minutes);
+    return  months[month] + ' '+  DISPLAY(day).toString() + ', ' + year.toString()  + ' at '+ DISPLAY(hours) + ':' + DISPLAY(minutes);
 }

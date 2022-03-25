@@ -13,16 +13,19 @@ $bgHoverColor:rgb(209, 209, 209);
     display: grid;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 30px;
     .main-movies-container {
         max-width: 900px;
+        padding:0 10px;
        @include setFlexCenterColumn(10px);
+       .single-movie-container:hover {
+           box-shadow:0 0 10px red;
+       }
         .single-movie-container {
+            width: calc(100% - 25px);
+            padding:10px;
             border:1px solid silver;
             background-color: white;
-            padding:10px;
             border-radius:5px;
-            width:100%;
             display: flex;
             justify-content: flex-start;
             gap:10px;
@@ -35,6 +38,10 @@ $bgHoverColor:rgb(209, 209, 209);
             }
             .row-2 {
                 flex: 1 1 65%;
+                display: flex;
+                justify-content:flex-start;
+                flex-direction: column;
+                align-items: flex-start;
             }
             .movie-image-container {
                 width:100%;
@@ -96,6 +103,7 @@ $bgHoverColor:rgb(209, 209, 209);
     width:100%;
     float:left;
     .pagination-buttons-container {
+        margin: 20px  0;
         display: flex;
         justify-content:center;
         width:100%;
@@ -125,6 +133,15 @@ $bgHoverColor:rgb(209, 209, 209);
         flex-direction: column;
         .row-1, .row-2 {
             flex:1 1 100%;
+        }
+    }
+}
+@media screen and (max-width:400px) {
+    .home-container .main-movies-container .single-movie-container .movie-image-container {
+        max-height: 100%;
+        max-width: 100%;
+        img {
+            width:100%;
         }
     }
 }

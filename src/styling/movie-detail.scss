@@ -10,10 +10,11 @@ $bgHoverColor:rgb(209, 209, 209);
     gap:$gap;
 }
 .content-contaienr{
-    display: flex;
+    display: grid;
     justify-content: center;
     width: calc(100% - 20px);
     padding:0 10px;
+    flex-direction: column;
     .movie-container {
         @include setWidthAndPadding(10px);
         @include setFlexCenterColumn(5px);
@@ -39,18 +40,6 @@ $bgHoverColor:rgb(209, 209, 209);
             
         }
     .comments-container {
-        @include setFlexCenterColumn(10px);
-        .row-3 {
-            @include setFlexCenterColumn(5px);
-            .comment {
-                @include setWidthAndPadding(10px);
-                border:1px solid lightgray;
-                border-radius:5px;
-                .date-container {
-                    font-size:11px;
-                }
-            }
-        }
         .row-2 {
             textarea {
                 @include setWidthAndPadding(10px);
@@ -59,6 +48,7 @@ $bgHoverColor:rgb(209, 209, 209);
                 height: 50px;
                 min-height: 40px;
                 font-size:14px;
+                margin-top: 5px;
             }
         }
         button {
@@ -68,5 +58,64 @@ $bgHoverColor:rgb(209, 209, 209);
         }
 
     }
+    }
+    .movie-suggestion-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px 0;
+        .suggestion-container {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            max-width: 230px;
+            max-height: 395px;
+            color: white;
+            font-size:11px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid black;
+            .image {
+                max-width: 230px;
+                max-height: 345px;
+                background: black;
+                overflow: hidden;
+                img {
+                    width: 230px;
+                    height: 345px;
+                    object-fit: contain;
+                  
+                }
+            }
+            .title, .year {
+                width:100%;
+                padding:0 5px;
+                margin:5px 0;
+            }
+        }
+    }
 }
+@media screen and (max-width:550px){
+    .content-contaienr .movie-suggestion-container {
+        flex-direction: column;
+        justify-content: center;
+        display: flex;
+        align-items:center;
+        
+    }
+}
+@media screen and (max-width:520px){
+    .content-contaienr .movie-container .image-container {
+            width: 100%;
+            height:100%;
+            justify-content: center;
+            img {
+                width:100%;
+                height: 100%;
+                object-fit:cover;
+        }
+    }
 }

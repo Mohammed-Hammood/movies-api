@@ -53,7 +53,7 @@ export default function MovieDetail(){
             for(let i = 0; i < anchors.length; i++){
                 anchors[i].removeAttribute('href');
             }
-        }
+        } 
     }
     const splitGenres = (genres)=> {
         if(genres){

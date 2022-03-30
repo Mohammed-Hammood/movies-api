@@ -26,7 +26,20 @@ export default function Home(){
             .catch((error)=> {throw new Error("Error: "+ error)});      
            
     }, [currentPage]);
-
+    const splitGenres = (genres)=> {
+        if(genres){
+            const container = document.createElement('div');
+            container.append('Genres: ')
+            for(let i =0; i < genres.length; i++){
+                let child = document.createElement('span');
+                child.innerText = (i < genres.length - 1)? genres[i] + ', ': genres[i] ;
+                container.append(child);
+            }
+            
+            return container.innerText;
+        }
+        return null;
+    }
     return (<>
     <div className="home-container">
                 <div className="pagination-container">
@@ -54,7 +67,7 @@ export default function Home(){
                                 <div ><strong> {item.title}</strong></div> 
                                 <div className="truncate">{item.summary }</div>
                                 <div >Year: {item.year}</div>
-                                <div>Genres: {item.genres.map((item, index)=> {return <span key={index}> {item}</span>})}</div>
+                                <div>{splitGenres(item.genres)}</div>
                                 <div>Rationg: {item.rating} <i className="fa fa-star"></i></div>
                                 <div className='view-details-container'><Link to={'/id='+ item.id }>View details</Link></div>
                             </div>
